@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Lensora | Photography & Video Directory</title>
+    <meta name="description" content="Contact the Lensora directory to submit a listing or find creative professionals.">
+    <link rel="icon" type="image/png" href="assets/images/website-logo.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Global Navbar (Dark Variant) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/images/website-logo.png" alt="Lensora Logo" class="site-logo-img">
+                <div class="nav-brand-text">
+                    <span class="nav-brand-title">LENSORA</span>
+                    <span class="nav-brand-subtitle">Photography / Video Directory</span>
+                </div>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="directory.html">Directory</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#" class="btn btn-primary" data-modal="modal-submit-listing">Submit Listing</a>
+            </div>
+
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="directory.html">Directory</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+        <a href="#" class="btn btn-primary" data-modal="modal-submit-listing">Submit Listing</a>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="container">
+            <button class="search-close" aria-label="Close Search">&times;</button>
+            <div class="search-input-wrap">
+                <p style="font-family: var(--font-heading); font-size:1.5rem; margin-bottom:1rem; opacity:0.8;">WHAT ARE YOU LOOKING FOR?</p>
+                <input type="text" id="global-search" class="search-input" placeholder="Type a keyword, location, or category...">
+                <p style="margin-top:2rem; opacity:0.6;">Try: "Wedding in Chennai", "Commercial Photographer", "Videography"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. HERO SECTION -->
+    <section class="section secondary-hero">
+        <div class="container text-center" style="max-width: 800px; margin: 0 auto;">
+            <h1 style="margin-bottom: 2rem;">LET'S TALK ABOUT YOUR NEXT VISUAL STORY.</h1>
+            <p style="font-size: 1.2rem; color: #444; margin-bottom: 3rem;">Looking for a photographer, videographer or creative studio? Start an enquiry and tell us what you need.</p>
+            <a href="#" class="btn btn-primary" data-modal="modal-enquiry">START AN ENQUIRY &rarr;</a>
+        </div>
+    </section>
+
+    <!-- 2. CONTACT INFORMATION -->
+    <section class="section section-padding">
+        <div class="container">
+            <div class="grid-2" style="gap:4rem;">
+                <div style="background:var(--primary-color); color:var(--secondary-color); padding:4rem; border-radius:var(--border-radius);">
+                    <h2 class="section-title" style="color:var(--secondary-color); margin-bottom:2rem;">LENSORA CREATIVE DIRECTORY</h2>
+                    <ul style="list-style:none; padding:0; margin:0; line-height:2.5;">
+                        <li style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(244,240,232,0.1); padding-bottom:1rem; margin-bottom:1rem;">
+                            <span style="opacity:0.6;">Email</span>
+                            <span style="font-weight:500;">hello@lensora.com</span>
+                        </li>
+                        <li style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(244,240,232,0.1); padding-bottom:1rem; margin-bottom:1rem;">
+                            <span style="opacity:0.6;">Phone</span>
+                            <span style="font-weight:500;">+91 98765 43210</span>
+                        </li>
+                        <li style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(244,240,232,0.1); padding-bottom:1rem; margin-bottom:1rem;">
+                            <span style="opacity:0.6;">Location</span>
+                            <span style="font-weight:500; text-align:right;">Creative Hub, Chennai<br>Tamil Nadu, India</span>
+                        </li>
+                        <li style="display:flex; justify-content:space-between;">
+                            <span style="opacity:0.6;">Hours</span>
+                            <span style="font-weight:500; text-align:right;">Monday – Saturday<br>10:00 AM – 7:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+                <div style="border-radius: var(--border-radius); overflow: hidden; height:100%;">
+                    <img src="assets/images/image-9.png" alt="Contact Studio" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. WHAT CAN WE HELP WITH? -->
+    <section class="section section-padding bg-light">
+        <div class="container text-center">
+            <h2 class="section-title" style="margin-bottom:3rem;">WHAT CAN WE HELP WITH?</h2>
+            <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; max-width:800px; margin:0 auto 3rem;" id="contact-topics">
+                <button class="location-tag active" onclick="updateCTA(this, 'START PHOTOGRAPHY ENQUIRY &rarr;')">Find a Photographer</button>
+                <button class="location-tag" onclick="updateCTA(this, 'START VIDEOGRAPHY ENQUIRY &rarr;')">Find a Videographer</button>
+                <button class="location-tag" onclick="updateCTA(this, 'START WEDDING ENQUIRY &rarr;')">Wedding Coverage</button>
+                <button class="location-tag" onclick="updateCTA(this, 'START COMMERCIAL ENQUIRY &rarr;')">Commercial Production</button>
+                <button class="location-tag" onclick="updateCTA(this, 'START EVENT ENQUIRY &rarr;')">Event Coverage</button>
+                <button class="location-tag" onclick="updateCTA(this, 'SUBMIT YOUR PROFILE &rarr;')">Submit a Listing</button>
+                <button class="location-tag" onclick="updateCTA(this, 'START GENERAL ENQUIRY &rarr;')">General Enquiry</button>
+            </div>
+            
+            <a href="#" id="dynamic-contact-btn" class="btn btn-primary" data-modal="modal-enquiry">START PHOTOGRAPHY ENQUIRY &rarr;</a>
+        </div>
+    </section>
+
+    <!-- 4. MAP SECTION -->
+    <section class="section" style="line-height: 0;">
+        <div style="width: 100%; height: 450px; background-color: #eee;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.5956044738415!2d80.2458739152917!3d13.061989690797374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526615b498d571%3A0xc66c1b3531b67f13!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1633512345678!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- 5. FAQ SECTION -->
+    <section class="section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+                <p>Everything you need to know about Lensora and our directory.</p>
+            </div>
+            
+            <style>
+                .faq-answer {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease-out;
+                }
+                .faq-item.active .faq-answer {
+                    max-height: 500px; /* Arbitrary large height to allow expansion */
+                }
+                .faq-icon {
+                    transition: transform 0.3s;
+                    font-size: 1.2rem;
+                }
+                .faq-item.active .faq-icon {
+                    transform: rotate(180deg);
+                }
+            </style>
+
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <!-- FAQ 1 -->
+                <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
+                    <button class="faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; color: var(--primary-color); cursor: pointer; text-align: left; padding: 0;">
+                        How do I submit my profile to the directory?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="padding-top: 1rem; color: #555; margin: 0;">You can submit your profile by clicking the "Submit Listing" button in the navigation or on the directory page. Once submitted, our team will review it within 2-3 business days.</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
+                    <button class="faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; color: var(--primary-color); cursor: pointer; text-align: left; padding: 0;">
+                        Is there a fee to be listed?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="padding-top: 1rem; color: #555; margin: 0;">Basic listings are completely free. We also offer premium placements for creatives who want to increase their visibility across our platform.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
+                    <button class="faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; color: var(--primary-color); cursor: pointer; text-align: left; padding: 0;">
+                        How can clients contact me?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="padding-top: 1rem; color: #555; margin: 0;">Clients can contact you directly through the "Enquire" button on your profile card, which will send their message straight to your registered email address.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
+                    <button class="faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; color: var(--primary-color); cursor: pointer; text-align: left; padding: 0;">
+                        Can I update my portfolio later?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="padding-top: 1rem; color: #555; margin: 0;">Yes, you can update your portfolio, service descriptions, and rates at any time by logging into your creative dashboard.</p>
+                    </div>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
+                    <button class="faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; color: var(--primary-color); cursor: pointer; text-align: left; padding: 0;">
+                        Do you cover international locations?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="padding-top: 1rem; color: #555; margin: 0;">While we started focusing on major Indian cities, our directory is rapidly expanding globally. You can list your location no matter where you are based.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                const answer = button.nextElementSibling;
+                
+                if (item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    answer.style.maxHeight = null;
+                } else {
+                    document.querySelectorAll('.faq-item').forEach(i => {
+                        i.classList.remove('active');
+                        i.querySelector('.faq-answer').style.maxHeight = null;
+                    });
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="footer-brand" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.2rem;">
+                            <img src="assets/images/website-logo.png" alt="Lensora Logo" class="site-logo-img" style="margin-bottom: 0;">
+                            <h2 style="font-family: var(--font-heading); font-size: 1.6rem; margin: 0; line-height: 1;">LENSORA</h2>
+                        </div>
+                        <p style="font-size: 0.8rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7; margin: 0;">PHOTOGRAPHY / VIDEO DIRECTORY</p>
+                    </a>
+                    <p style="font-size:0.9rem; max-width: 250px;">Discover creative professionals, visual inspiration and trusted local services.</p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">EXPLORE</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="#">Guides</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">COMPANY</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#" data-modal="modal-submit-listing">Submit Listing</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">CONNECT</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 LENSORA. Fictional Photography Video Guide & Directory Portal. Frontend Demonstration Only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    
+    <!-- Submit Listing Modal -->
+    <div class="modal-overlay" id="modal-submit-listing">
+        <div class="modal">
+            <button class="modal-close" aria-label="Close Modal">&times;</button>
+            <div class="section-header text-center" style="margin-bottom:2rem;">
+                <h3 style="font-size:2rem; color:var(--primary-color);">ADD YOUR CREATIVE PROFILE</h3>
+                <p>Join the Lensora directory.</p>
+            </div>
+            
+            <form>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Professional / Studio Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Location</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Photography / Videography</label>
+                        <select class="form-control" required>
+                            <option value="">Select Primary</option>
+                            <option>Photography</option>
+                            <option>Videography</option>
+                            <option>Both</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <input type="text" class="form-control" placeholder="e.g. Wedding, Commercial, Portrait" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Short Bio</label>
+                    <textarea class="form-control" required></textarea>
+                </div>
+
+                <div class="text-center" style="margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="width:100%;">SUBMIT LISTING &rarr;</button>
+                    <p class="form-demo-note">This is a frontend demonstration. No data is stored on a server.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Enquiry Modal -->
+    <div class="modal-overlay" id="modal-enquiry">
+        <div class="modal">
+            <button class="modal-close" aria-label="Close Modal">&times;</button>
+            <div class="section-header text-center" style="margin-bottom:2rem;">
+                <h3 style="font-size:2rem; color:var(--primary-color);">LET'S FIND THE RIGHT CREATIVE FIT.</h3>
+                <p>Send a sample enquiry.</p>
+            </div>
+            
+            <form>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Enquiry Type</label>
+                        <select class="form-control" required>
+                            <option>General Enquiry</option>
+                            <option>Photography Request</option>
+                            <option>Videography Request</option>
+                            <option>Wedding Enquiry</option>
+                            <option>Commercial Enquiry</option>
+                            <option>Event Enquiry</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Preferred Date</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" required></textarea>
+                </div>
+
+                <div class="text-center" style="margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="width:100%;">SEND ENQUIRY &rarr;</button>
+                    <p class="form-demo-note">This is a frontend demonstration. No data is sent.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function updateCTA(btn, text) {
+            const btns = document.querySelectorAll('#contact-topics button');
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const mainBtn = document.getElementById('dynamic-contact-btn');
+            mainBtn.innerHTML = text;
+            
+            if (text.includes("SUBMIT YOUR PROFILE")) {
+                mainBtn.setAttribute('data-modal', 'modal-submit-listing');
+            } else {
+                mainBtn.setAttribute('data-modal', 'modal-enquiry');
+            }
+        }
+    </script>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to Top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
