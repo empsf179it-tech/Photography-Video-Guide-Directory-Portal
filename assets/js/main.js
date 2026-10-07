@@ -213,17 +213,95 @@ document.addEventListener('DOMContentLoaded', () => {
     // Filters logic
     const filterForm = document.getElementById('dir-filter-form');
     if (filterForm) {
-        filterForm.addEventListener('change', () => {
-            const catFilter = filterForm.querySelector('input[name="cat"]:checked')?.value || 'all';
-            
-            let filtered = sampleListings;
-            
-            if (catFilter !== 'all') {
-                filtered = filtered.filter(item => item.cat.toLowerCase() === catFilter);
-            }
-            
-            renderListings(filtered);
+        const dirLayout = document.querySelector('.dir-layout');
+        const filterToggleBtn = document.getElementById('filter-toggle-btn');
+        const filterCloseBtn = document.getElementById('filter-close-btn');
+        const filterShowBtn = document.getElementById('filter-show-results-btn');
+        const filterCountBadge = document.getElementById('filter-active-count');
+        const tabletQuery = window.matchMedia('(max-width: 1024px)');
+
+        // Read current selections from the form
+        const getFilterState = () => ({
+            cat: filterForm.querySelector('input[name="cat"]:checked')?.value || 'all',
+            locs: Array.from(filterForm.querySelectorAll('input[name="loc"]:checked')).map(i => i.value.toLowerCase()),
+            rating: filterForm.querySelector('input[name="rating"]:checked')?.value || 'all',
+            verified: filterForm.querySelector('input[name="verified"]')?.checked || false
         });
+
+        const applyFilters = () => {
+            const f = getFilterState();
+
+            const filtered = sampleListings.filter(item => {
+                if (f.cat !== 'all' && item.cat.toLowerCase() !== f.cat) return false;
+                if (f.locs.length > 0 && !f.locs.includes(item.loc.toLowerCase())) return false;
+                if (f.rating !== 'all' && parseFloat(item.rating) < parseFloat(f.rating)) return false;
+                if (f.verified && !item.verified) return false;
+                return true;
+            });
+
+            renderListings(filtered);
+
+            // Active filter count on the toggle button
+            const activeCount = (f.cat !== 'all' ? 1 : 0) + f.locs.length + (f.rating !== 'all' ? 1 : 0) + (f.verified ? 1 : 0);
+            if (filterCountBadge) {
+                filterCountBadge.textContent = activeCount;
+                filterCountBadge.hidden = activeCount === 0;
+            }
+            if (filterShowBtn) {
+                filterShowBtn.textContent = `SHOW ${filtered.length} RESULT${filtered.length === 1 ? '' : 'S'}`;
+            }
+        };
+
+        filterForm.addEventListener('change', applyFilters);
+        filterForm.addEventListener('submit', (e) => e.preventDefault());
+        // Clear Filters: wait for the browser to reset inputs, then re-apply
+        filterForm.addEventListener('reset', () => setTimeout(applyFilters, 0));
+
+        // --- Filter panel toggle (desktop: show/hide sidebar, tablet/mobile: open/close panel) ---
+        const isFiltersOpen = () => tabletQuery.matches
+            ? dirLayout.classList.contains('filters-open')
+            : !dirLayout.classList.contains('filters-collapsed');
+
+        const setFiltersOpen = (open) => {
+            if (!dirLayout) return;
+            if (tabletQuery.matches) {
+                dirLayout.classList.toggle('filters-open', open);
+                dirLayout.classList.remove('filters-collapsed');
+            } else {
+                dirLayout.classList.toggle('filters-collapsed', !open);
+                dirLayout.classList.remove('filters-open');
+            }
+            if (filterToggleBtn) {
+                filterToggleBtn.setAttribute('aria-expanded', String(open));
+                filterToggleBtn.classList.toggle('active', open);
+                const txt = filterToggleBtn.querySelector('.filter-toggle-text');
+                if (txt) txt.textContent = open ? 'HIDE FILTERS' : 'FILTERS';
+            }
+        };
+
+        // Default: open on desktop, closed on tablet/mobile
+        setFiltersOpen(!tabletQuery.matches);
+        const onViewportChange = () => setFiltersOpen(!tabletQuery.matches);
+        if (tabletQuery.addEventListener) tabletQuery.addEventListener('change', onViewportChange);
+        else if (tabletQuery.addListener) tabletQuery.addListener(onViewportChange);
+
+        if (filterToggleBtn) {
+            filterToggleBtn.addEventListener('click', () => setFiltersOpen(!isFiltersOpen()));
+        }
+        if (filterCloseBtn) {
+            filterCloseBtn.addEventListener('click', () => {
+                setFiltersOpen(false);
+                filterToggleBtn?.focus();
+            });
+        }
+        if (filterShowBtn) {
+            filterShowBtn.addEventListener('click', () => {
+                setFiltersOpen(false);
+                dirGrid?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+
+        applyFilters();
     }
 
     // Location visual interactions (Home section)

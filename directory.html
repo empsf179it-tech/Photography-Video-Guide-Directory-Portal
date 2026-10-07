@@ -101,15 +101,27 @@
     <section class="section section-padding">
         <div class="container">
             <h2 class="section-title" style="margin-bottom: 2rem;">CREATIVE PROFESSIONALS</h2>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; border-bottom:1px solid var(--border-color); padding-bottom:1rem;">
-                <p id="result-count" style="font-weight:500;">Loading demo data...</p>
-                <p style="font-size:0.85rem; color:#666; font-style:italic;">Sample Directory Data</p>
+            <div class="dir-toolbar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; border-bottom:1px solid var(--border-color); padding-bottom:1rem;">
+                <p id="result-count" style="font-weight:500; margin-bottom:0;">Loading demo data...</p>
+                <div class="dir-toolbar-right">
+                    <p class="dir-sample-note" style="font-size:0.85rem; color:#666; font-style:italic; margin-bottom:0;">Sample Directory Data</p>
+                    <button type="button" id="filter-toggle-btn" class="filter-toggle-btn" aria-controls="dir-filters-panel" aria-expanded="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                        <span class="filter-toggle-text">FILTERS</span>
+                        <span class="filter-count" id="filter-active-count" hidden>0</span>
+                    </button>
+                </div>
             </div>
 
             <div class="dir-layout">
                 <!-- Filters -->
-                <aside class="dir-filters">
+                <aside class="dir-filters" id="dir-filters-panel">
+                    <div class="filter-panel-head">
+                        <h4 class="filter-title" style="margin-bottom:0;">Filters</h4>
+                        <button type="button" class="filter-close-btn" id="filter-close-btn" aria-label="Close Filters">&times;</button>
+                    </div>
                     <form id="dir-filter-form">
+                        <div class="filter-groups">
                         <div class="filter-group">
                             <h4 class="filter-title">Category</h4>
                             <label class="filter-label"><input type="radio" name="cat" value="all" checked> All</label>
@@ -133,7 +145,9 @@
                             <h4 class="filter-title">Verified Only</h4>
                             <label class="filter-label"><input type="checkbox" name="verified"> Verified</label>
                         </div>
-                        <button type="reset" class="btn btn-dark-outline" style="width:100%; padding:0.5rem; height:auto; margin-top:1rem;" onclick="setTimeout(()=>document.getElementById('dir-filter-form').dispatchEvent(new Event('change')), 50);">CLEAR FILTERS</button>
+                        </div>
+                        <button type="reset" id="filter-clear-btn" class="btn btn-dark-outline" style="width:100%; padding:0.5rem; height:auto; margin-top:1rem;">CLEAR FILTERS</button>
+                        <button type="button" id="filter-show-results-btn" class="btn btn-primary filter-show-results" style="width:100%; padding:0.75rem; height:auto; margin-top:0.75rem;">SHOW RESULTS</button>
                     </form>
                 </aside>
 
